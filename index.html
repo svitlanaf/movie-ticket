@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/jquery-3.3.1.js" charset="utf-8"></script>
+    <script src="js/scripts.js" charset="utf-8"></script>
+    <title>Movie tickets</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Movie tickets</h1>
+      <form id="formOne">
+          <div class="form-group">
+            <label for="age">Age </label>
+            <input id="age" type="text"><br>
+          </div>
+          <div>
+          <label for="movie">Choose a Film</label>
+          <select class="form-control" id="movie">
+            <option>All</option>
+            <option>Capitan Marvel</option>
+            <option>Batman</option>
+            <option>Black Mother</option>
+            <option>Buddy</option>
+          </select>
+        </div>
+        <div>
+        <label for="time">Time</label>
+        <select class="form-control" id="time">
+          <option>All</option>
+          <option>Morning</option>
+          <option>Afternoon</option>
+          <option>Evening</option>
+        </select>
+      </div>
+      <button type="submit" type="btn btn-ptimary">Submit</button>
+    </form>
+      <div id="ticketPrice"></div>
+      
+  </body>
+</html>
