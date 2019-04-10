@@ -20,7 +20,7 @@ var movies = [
   new Movie("Apollo 11", 2019, "R", ["2.30pm", "10.30pm"]),
   new Movie("Shazam!", 2019, "PG-13", ["10.30am", "5.00pm"]),
 ]
-console.log(movies)
+// console.log(movies)
 
 var filterMoviesByAge = function(age) {
   return movies.filter(function(movie) {
@@ -31,7 +31,10 @@ var filterMoviesByAge = function(age) {
     }
   })
 }
-// console.log (filterMoviesByAge (4))
+
+var timeByMovie = function(movie) {
+    return movie.time
+}
 
 
 // User Interface Logic ---------
@@ -46,15 +49,26 @@ $(document).ready(function() {
         "<option>" + movie.title + "</option>")
     })
   });
+    $("#movie").change(function(){
+      $("#time").empty()
+      var filteredMovie = $("select#movie").val();
+      var eachMovie = filteredMovie.split();
+      function timeByMovie(eachMovie) {
+        $("#time").append(
+          "<option>" + movie.time + "</option>")
+    };
+  })
+
+
   $("form#formOne").submit(function(event) {
     event.preventDefault();
     var ticketCost = 10;
     var seniorDiscount = 3;
     var morningDiscount = 3;
 
-    var userAge = $("input#age").val();
-    var userMovieChoice = $("#movie").val();
-    var userTimeChoice = $("#time").val();
+    // var userAge = $("input#age").val();
+    // var userMovieChoice = $("#movie").val();
+    // var userTimeChoice = $("#time").val();
 
     $("#ticketPrice").text("You are going to see " + userMovieChoice + " for " + cost);
   });
