@@ -19,8 +19,8 @@ var movies = [
   new Movie("Dumbo", 2019, "PG-13", ["10.30am", "2.30pm"]),
   new Movie("Apollo 11", 2019, "R", ["2.30pm", "10.30pm"]),
   new Movie("Shazam!", 2019, "PG-13", ["10.30am", "5.00pm"]),
-]
-// console.log(movies)
+];
+
 
 var filterMoviesByAge = function(age) {
   return movies.filter(function(movie) {
@@ -29,46 +29,44 @@ var filterMoviesByAge = function(age) {
     } else if (age > 13) {
       return true
     }
-  })
+  });
 }
 
-var timeByMovie = function(movie) {
-    return movie.time
-}
-
-
-// User Interface Logic ---------
-
+// User Interface Logic
 
 $(document).ready(function() {
-  $("#age").change(function(){
-    $("#movie").empty()
+
+  $("#age").change(function() {
+    $("#movie").empty();
     var userAge = parseInt($("input#age").val());
-    filterMoviesByAge(userAge).forEach(function(movie){
+    filterMoviesByAge(userAge).forEach(function(movie) {
       $("#movie").append(
         "<option>" + movie.title + "</option>")
-    })
+    });
   });
-    $("#movie").change(function(){
-      $("#time").empty()
-      var filteredMovie = $("select#movie").val();
-      var eachMovie = filteredMovie.split();
-      function timeByMovie(eachMovie) {
-        $("#time").append(
-          "<option>" + movie.time + "</option>")
-    };
-  })
 
+
+  $("#movie").change(function() {
+    $("#time").empty();
+    var filteredMovie = $("select#movie").val();
+    for (var i = 0; i < movies.length; i++) {
+      if (movies[i].title == filteredMovie) {
+        movies[i].time.forEach(function(t) {
+          $("#time").append(
+            "<option>" + t + "</option>")
+        });
+      }
+    };
+  });
 
   $("form#formOne").submit(function(event) {
     event.preventDefault();
+    var filteredMovie = $("select#movie").val();
+    var filteredTime = $("select#time").val();
+
     var ticketCost = 10;
     var seniorDiscount = 3;
     var morningDiscount = 3;
-
-    // var userAge = $("input#age").val();
-    // var userMovieChoice = $("#movie").val();
-    // var userTimeChoice = $("#time").val();
 
     $("#ticketPrice").text("You are going to see " + userMovieChoice + " for " + cost);
   });
